@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Go News Web App Searched</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/news_web/assets/style.css">
 </head>
     <body>
     <h1>Go News Web App Searched</h1>
@@ -13,7 +13,7 @@
         <!-- main -->
         <main>
             <header>
-                <a class="logo" href="/"> The News</a>
+                <a class="logo" href="/news_web"> The News</a>
                 <form  action="/search" method="GET">
                     <input 
                         autofocus
@@ -93,14 +93,14 @@
                         -->
                         {{ if (gt .NextPage 2) }}
                             <a 
-                                href="/search?q={{ .Query }}&page={{ .PreviousPage }}" 
+                                href="/news_web/search?q={{ .Query }}&page={{ .PreviousPage }}" 
                                 class="button previous-page"
                             >Previous</a>  
                         {{ end }}
 
                         {{ if (ne .IsLastPage true) }}
                             <a 
-                                href="/search?q={{ .Query }}&page={{ .NextPage }}" 
+                                href="/news_web/search?q={{ .Query }}&page={{ .NextPage }}" 
                                 class="button next-page"
                             >Next</a>
                         {{ end }}
