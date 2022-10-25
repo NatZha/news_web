@@ -194,15 +194,15 @@ func main() {
 	newsapi := news.NewClient(myClient, apiKey, 20)
 
 	// create file server for css assets
-	fs := http.FileServer(http.Dir("assets"))
+	fs := http.FileServer(http.Dir("/news_web/assets"))
 
 	// create http request multiplexer
 	mux := http.NewServeMux() 
 	mux.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	mux.HandleFunc("/", indexHandler)
+	mux.HandleFunc("/news_web", indexHandler)
 
 	// create search handler
-	mux.HandleFunc("/search", searchHandler(newsapi))
+	mux.HandleFunc("/news_web/search", searchHandler(newsapi))
 	
 	// starts server on the port and runs mux
 	http.ListenAndServe(":"+port, mux)
