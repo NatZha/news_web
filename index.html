@@ -13,7 +13,8 @@
         <!-- main -->
         <main>
             <header>
-                <a class="logo" href="/news_web"> The News</a>
+                <a class="logo" href="/news_web">The News</a>
+                
                 <form  action="/news_web/search" method="GET">
                     <input 
                         autofocus
@@ -24,13 +25,12 @@
                         name="q"
                     />
                 </form>
-                <a 
-                    href="https://natzha.github.io/"
-                    class="button github-button"
-                >
+
+                <a href="https://natzha.github.io/" class="button github-button">
                     View on Github
                 </a>
             </header>
+
             <section class="container">
                 <ul class="search-results">
                     <!-- range allows us to iterate over a slice in GO, outputing the following 
@@ -70,7 +70,7 @@
 
                         {{ else if (ne .Query "") and (eq .Results.TotalResults 0) }}
                         <p>
-                            No results foundfor you query: <strong>{{ .Query  }}</strong>.
+                            No results found for you query: <strong>{{ .Query  }}</strong>.
                         </p>
                         {{ end }}
                     {{  end }}

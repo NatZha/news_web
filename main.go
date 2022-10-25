@@ -11,12 +11,14 @@ import (
 	"strconv"
 	"math"
 	"bytes"
+	// "liquid"
 
 	// "news/news.go"
 	// news "news/news"
 	// "main/news"
 	"github.com/freshman-tech/news-demo-starter-files/news"
 	"github.com/joho/godotenv" 	// uses github.com/joho/godotenv to get environement
+	"github.com/osteele/liquid"
 )
 
 // points to template definition from provided files
@@ -188,6 +190,18 @@ func main() {
 	if apiKey == "" {
 		log.Fatal("Env: apiKey must be set")
 	}
+
+	engine := liquid.NewEngine()
+	template := `<h1>{{ page.title }}</h1>`
+	bindings := map[string]interface{}{
+		"page": map[string]string{
+			"title": "Introduction",
+		},
+	}
+	out, err := engine.ParseAndRenderString(template, bindings)
+	if err != nil { log.Fatalln(err) }
+	fmt.Println(out)
+	// Output: <h1>Introduction</h1>
 
 	// start client and newsapi
 	myClient := &http.Client{Timeout: 10 * time.Second} 
